@@ -21,18 +21,20 @@
     </div>
 
     <script>
-        Vue.createApp({
+        let app = {
             data(){
                 return {
                     active: true
                 }
             },
-            methods: {
-                toggle(){
-                    this.active = !this.active
-                }
-            }
-        }).mount("#app")
+            assignments: [
+                {name: 'teste 1', complete: false},
+                {name: 'teste 2', complete: false},
+                {name: 'teste 3', complete: false},
+            ]
+        }
+
+        Vue.createApp(app).mount("#app")
     </script>
 </body>
 </html>
