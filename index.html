@@ -17,21 +17,30 @@
 </head>
 <body>
     <div id="app">
-        <button v-bind:class="active ? 'text-green' : 'text-red'" v-on:click="toggle">click me</button>
+        <h1>assignments</h1>
+        <ul v-for="assignment in assignments">
+            <label>
+                <li>{{assignment.name}}</li>
+                <input type="checkbox" v-model="assignment.complete">
+            </label>
+        </ul>
+
+        <div>
+            {{assignments}}
+        </div>
     </div>
 
     <script>
         let app = {
             data(){
                 return {
-                    active: true
+                    assignments: [
+                        {name: 'teste 1', complete: false},
+                        {name: 'teste 2', complete: false},
+                        {name: 'teste 3', complete: false},
+                    ]
                 }
-            },
-            assignments: [
-                {name: 'teste 1', complete: false},
-                {name: 'teste 2', complete: false},
-                {name: 'teste 3', complete: false},
-            ]
+            }
         }
 
         Vue.createApp(app).mount("#app")
