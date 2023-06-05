@@ -17,13 +17,39 @@
 </head>
 <body>
     <div id="app">
-        <h1>assignments</h1>
-        <ul v-for="assignment in assignments">
-            <label>
-                <li>{{assignment.name}}</li>
-                <input type="checkbox" v-model="assignment.complete">
-            </label>
-        </ul>
+        <section>
+            <h1>In progress assignments</h1>
+            
+            <ul>
+                <li 
+                    v-for="assignment in assignments.filter(a => !a.complete)" 
+                    :key="assignment.id" 
+                >
+                    <label>
+                        {{assignment.name}}
+                        <input type="checkbox" v-model="assignment.complete">
+                    </label>
+                </li>
+            </ul>
+            
+
+        </section>
+
+        <section>
+            <h1>Completed assignments</h1>
+
+            <ul>
+                <li 
+                    v-for="assignment in assignments.filter(a => a.complete)" 
+                    :key="assignment.id" 
+                >
+                    <label>
+                        {{assignment.name}}
+                        <input type="checkbox" v-model="assignment.complete">
+                    </label>
+                </li>
+            </ul>
+        </section>
 
         <div>
             {{assignments}}
@@ -35,9 +61,9 @@
             data(){
                 return {
                     assignments: [
-                        {name: 'teste 1', complete: false},
-                        {name: 'teste 2', complete: false},
-                        {name: 'teste 3', complete: false},
+                        {id:1, name: 'teste 1', complete: false},
+                        {id:2, name: 'teste 2', complete: false},
+                        {id:3, name: 'teste 3', complete: false},
                     ]
                 }
             }
