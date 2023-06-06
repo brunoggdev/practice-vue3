@@ -17,59 +17,17 @@
 </head>
 <body>
     <div id="app">
-        <section v-show="inProgressAssignments.length">
-            <h1>In progress assignments</h1>
-            
-            <ul>
-                <li 
-                    v-for="assignment in inProgressAssignments" 
-                    :key="assignment.id" 
-                >
-                    <label>
-                        {{assignment.name}}
-                        <input type="checkbox" v-model="assignment.complete">
-                    </label>
-                </li>
-            </ul>
-            
-
-        </section>
-
-        <section v-show="completedAssignments.length">
-            <h1>Completed assignments</h1>
-
-            <ul>
-                <li 
-                    v-for="assignment in completedAssignments" 
-                    :key="assignment.id" 
-                >
-                    <label>
-                        {{assignment.name}}
-                        <input type="checkbox" v-model="assignment.complete">
-                    </label>
-                </li>
-            </ul>
-        </section>
-
-        <div>
-            {{assignments}}
-        </div>
+        <submit-button>Testando</submit-button>
     </div>
 
     <script>
         let app = {
-            data(){
-                return {
-                    assignments: [
-                        {id:1, name: 'teste 1', complete: false},
-                        {id:2, name: 'teste 2', complete: false},
-                        {id:3, name: 'teste 3', complete: false},
-                    ]
+            components:{
+                'submit-button': {
+                    mounted(){
+                        alert(<slot/>)
+                    }
                 }
-            },
-            computed: {
-                completedAssignments(){ return this.assignments.filter(a => a.complete)},
-                inProgressAssignments(){ return this.assignments.filter(a => !a.complete)},
             }
         }
 
